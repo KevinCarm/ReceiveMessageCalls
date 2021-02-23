@@ -1,12 +1,9 @@
 package com.kevcs.receivemessagecalls
 
 import android.annotation.SuppressLint
-import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.telephony.PhoneStateListener
 import android.telephony.SmsManager
-import android.telephony.TelephonyManager
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -14,7 +11,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.kevcs.receivemessagecalls.Receiver.MyCallReceiver
 
 
 class MainActivity : AppCompatActivity() {
@@ -34,6 +30,7 @@ class MainActivity : AppCompatActivity() {
             number = bundle!!.getString("number")
 
             if (number == daoNumber(this).getLastRegister()?.get(0)) {
+                message.setText("number: $number")
                 sendAutomaticMessage()
             }
 
